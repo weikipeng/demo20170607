@@ -60,7 +60,7 @@ module.exports = {
     }, {
       test: /\.jsx*$/,
       exclude: [/node_modules/, /.+\.config.js/],
-      loader: ['babel'],
+      loader: 'babel-loader',
     }, {
       test: /\.(jpe?g|gif|png|svg)$/i,
       loader: "url-loader",
@@ -69,8 +69,8 @@ module.exports = {
       },
     }, {
       test: /\.json$/,
-      loader: ['json-loader'],
-    }, ],
+      loader: 'json-loader',
+    },],
   },
 
   plugins: [

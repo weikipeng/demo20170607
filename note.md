@@ -3,6 +3,21 @@
 note
 =====
 ## 95 webpack
+
+npm install --save-dev eventsource-polyfill
+
+兼容 IE
+
+說到 IE，一堆工程師的頭都痛了。
+但 eventsource-polyfill 可以讓 Webpack 兼容 IE！
+修改 webpack.config.js 的 entry：
+
+entry: [
+  // 一定要在前面
+  'eventsource-polyfill',
+  './src/main.jsx',
+],
+------
 查找 webpack.optimize.CommonsChunkPlugin
 webpack.DefinePlugin
 react-hot-loader
@@ -65,6 +80,8 @@ module.exports = {
 ----
 
 ## babel
+npm install --save-dev babel-loader babel-eslint babel-plugin-webpack-loaders babel-polyfill babel-preset-es2015 babel-preset-es2015-native-modules babel-preset-react babel-preset-react-optimize babel-preset-stage-0 babel-register
+
 "babel-eslint": "^6.0.4",
 "babel-loader": "^6.2.4",
 "babel-plugin-webpack-loaders": "^0.7.0",
