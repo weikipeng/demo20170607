@@ -27,7 +27,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx'],
     modules: [
       'client',
       'node_modules',
@@ -35,27 +35,42 @@ module.exports = {
   },
 
   module: {
-    loaders: [
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        loader: 'style-loader!css-loader?localIdentName=[name]__[local]__[hash:base64:5]&modules&importLoaders=1&sourceMap!postcss-loader',
-      }, {
-        test: /\.css$/,
-        include: /node_modules/,
-        loaders: ['style-loader', 'css-loader'],
-      }, {
-        test: /\.jsx*$/,
-        exclude: [/node_modules/, /.+\.config.js/],
-        loader: 'babel',
-      }, {
-        test: /\.(jpe?g|gif|png|svg)$/i,
-        loader: 'url-loader?limit=10000',
-      }, {
-        test: /\.json$/,
-        loader: 'json-loader',
+    rules: [{
+      test: /\.css$/,
+      exclude: /node_modules/,
+      use: [{
+          loader: 'style-loader'
+        },
+        {
+          loader: "css-loader",
+          options: {
+            modules: true,
+            localIdentName: '[path][name]__[local]--[hash:base64:5]',
+            importLoaders: 1,
+            sourceMap: true,
+          }
+        }, {
+          loader: 'postcss-loader'
+        }
+      ]
+    }, {
+      test: /\.css$/,
+      include: /node_modules/,
+      use: ['style-loader', 'css-loader'],
+    }, {
+      test: /\.jsx*$/,
+      exclude: [/node_modules/, /.+\.config.js/],
+      loader: ['babel'],
+    }, {
+      test: /\.(jpe?g|gif|png|svg)$/i,
+      loader: "url-loader",
+      options: {
+        limit: 10000
       },
-    ],
+    }, {
+      test: /\.json$/,
+      loader: ['json-loader'],
+    }, ],
   },
 
   plugins: [
@@ -73,13 +88,4 @@ module.exports = {
     }),
   ],
 
-  postcss: () => [
-    postcssFocus(),
-    cssnext({
-      browsers: ['last 2 versions', 'IE > 10'],
-    }),
-    postcssReporter({
-      clearMessages: true,
-    }),
-  ],
 };

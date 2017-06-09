@@ -3,6 +3,12 @@
 note
 =====
 ## 95 webpack
+查找 webpack.optimize.CommonsChunkPlugin
+webpack.DefinePlugin
+react-hot-loader
+
+-----
+
 npm install --save-dev webpack webpack-dev-middleware webpack-dev-server webpack-externals-plugin webpack-hot-middleware webpack-manifest-plugin
 
 "webpack": "2.1.0-beta.8",
@@ -12,20 +18,75 @@ npm install --save-dev webpack webpack-dev-middleware webpack-dev-server webpack
     "webpack-hot-middleware": "^2.10.0",
     "webpack-manifest-plugin": "^1.0.1"
 
-## postcss-focus
-npm install --save-dev postcss-cssnext postcss-focus postcss-reporter
 
-## 96 babel-polyfill
+    //安装
+    npm install --save-dev style-loader css-loader
+
+## postcss-focus
+npm install --save-dev postcss-loader postcss-cssnext postcss-focus postcss-reporter
+
+"postcss-cssnext": "^2.6.0",
+"postcss-focus": "^1.0.0",
+"postcss-loader": "^0.9.1",
+"postcss-reporter": "^1.3.3",
+
+------
+use: 'style-loader!css-loader?localIdentName=[name]__[local]__[hash:base64:5]&modules&importLoaders=1&sourceMap!postcss-loader',
+------
+postcss: () => [
+  postcssFocus(),
+  cssnext({
+    browsers: ['last 2 versions', 'IE > 10'],
+  }),
+  postcssReporter({
+    clearMessages: true,
+  }),
+],
+------
+``` javaScript
+
+module.exports = {
+  plugins: [
+    require('postcss-conditionals')(),
+    require('postcss-simple-vars')(),  //https://www.npmjs.com/package/postcss-simple-vars
+    require('postcss-each')(),
+    require('postcss-for')(),
+    require('postcss-mixins')(),
+    require('postcss-import')(),
+    require('postcss-nested')(),
+    require('postcss-atroot')(),
+    require('cssnext')({
+      features: {rem: false}
+    }),
+    require('postcss-extend')()
+  ]
+}
+```
+----
+
+## babel
+"babel-eslint": "^6.0.4",
+"babel-loader": "^6.2.4",
+"babel-plugin-webpack-loaders": "^0.7.0",
+"babel-polyfill": "^6.9.1",
+"babel-preset-es2015": "^6.9.0",
+"babel-preset-es2015-native-modules": "^6.6.0",
+"babel-preset-react": "^6.5.0",
+"babel-preset-react-optimize": "^1.0.1",
+"babel-preset-stage-0": "^6.5.0",
+"babel-register": "^6.9.0",
+
+### 96 babel-polyfill
 babel-polyfill
 
 npm install --save babel-polyfill
 
-## 97 babel-plugin-webpack-loaders
+### 97 babel-plugin-webpack-loaders
 babel-plugin-webpack-loaders
 
 npm install --save-dev babel-cli babel-plugin-webpack-loaders
 
-## 98 babel-register
+### 98 babel-register
 npm install babel-register --save-dev
 require("babel-register");
 
