@@ -2,6 +2,19 @@
 
 note
 =====
+## 94 redux
+### redux-thunk
+npm install --save redux-thunk
+
+npm install --save-dev redux-devtools redux-devtools-dock-monitor redux-devtools-log-monitor
+
+"react-addons-test-utils": "^15.1.0",
+"react-hot-loader": "^3.0.0-beta.2",
+"redux-ava": "^2.0.0",
+"redux-devtools": "^3.3.1",
+"redux-devtools-dock-monitor": "^1.1.1",
+"redux-devtools-log-monitor": "^1.0.11",
+--------
 ## 95 webpack
 
 npm install --save-dev eventsource-polyfill

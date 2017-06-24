@@ -15,3 +15,12 @@ if(process.env.NODE_ENV === 'development'){
   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
   app.use(webpackHotMiddleware(compiler));
 }
+
+
+// React And Redux Setup
+import { configureStore } from '../client/store';
+// import { Provider } from 'react-redux';
+// import React from 'react';
+// import { renderToString } from 'react-dom/server';
+// import { match, RouterContext } from 'react-router';
+// import Helmet from 'react-helmet';
