@@ -2,7 +2,34 @@
 
 note
 =====
+## npm
+命令
+npm list --depth 0
+npm outdated
+
+该命令告诉我们，具体某个依赖包 的依赖关系。
+npm view @angular/core@2.2.0 peerDependencies
+npm view @chunk-manifest-webpack-plugin@0.1.0 peerDependencies
+
+## React
+npm install classnames --save
+
+###问题
+Accessing PropTypes via the main React package is deprecated
+- https://facebook.github.io/react/warnings/dont-call-proptypes.html
+
+##Mongodb
+mongodb start
+mongod -dbpath /Users/wikipeng/Documents/data/db
+
 ## 94 redux
+### 安装 react-helmet
+npm install react-helmet --save
+
+A document head manager for React
+
+### react-router
+npm install react-router --save
 ### redux-thunk
 npm install --save redux-thunk
 
